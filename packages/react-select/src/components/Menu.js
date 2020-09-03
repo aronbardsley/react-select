@@ -65,7 +65,7 @@ export function getMenuPlacement({
 
   // we can't trust `scrollParent.scrollHeight` --> it may increase when
   // the menu is rendered
-  const { height: scrollHeight } = scrollParent.getBoundingClientRect();
+  const { height: scrollHeight, bottom: scrollBottom } = scrollParent.getBoundingClientRect();
   const {
     bottom: menuBottom,
     height: menuHeight,
@@ -89,6 +89,11 @@ export function getMenuPlacement({
 
   switch (placement) {
     case 'auto':
+      if(menuBottom > scrollBottom) {
+        return { placement: 'top', maxHeight };
+      } else {
+        return { placement: 'bottom', maxHeight };
+      }
     case 'bottom':
       // 1: the menu will fit, do nothing
       if (viewSpaceBelow >= menuHeight) {

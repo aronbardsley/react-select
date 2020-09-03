@@ -138,7 +138,7 @@ export function getScrollParent(element: ElementRef<*>): Element {
     if (excludeStaticParent && style.position === 'static') {
       continue;
     }
-    if (overflowRx.test(style.overflow + style.overflowY + style.overflowX)) {
+    if (overflowRx.test(style.overflow + style.overflowY + style.overflowX) || parent.classList.contains("ps")) {
       return parent;
     }
   }

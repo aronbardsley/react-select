@@ -183,6 +183,7 @@ export type Props = {
   /* Default placement of the menu in relation to the control. 'auto' will flip
      when there isn't enough space below the control. */
   menuPlacement: MenuPlacement,
+  scrollContainer: HTMLElement,
   /* The CSS position value of the menu, when "fixed" extra layout management is required */
   menuPosition: MenuPosition,
   /*
